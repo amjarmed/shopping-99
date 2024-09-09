@@ -1,5 +1,5 @@
 import './home.scss';
-
+import FavColor from '../Components/FavColor';
 function Home() {
   return (
     <>
@@ -10,6 +10,11 @@ function Home() {
         reprehenderit quia alias, assumenda perferendis quibusdam cumque
         inventore! Unde, eveniet tenetur.
       </p>
+
+      <div>
+        <hr />
+        <FavColor />
+      </div>
     </>
   );
 }
