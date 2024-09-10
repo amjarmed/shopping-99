@@ -6,11 +6,17 @@
 
 ### Hooks
 
-Hooks allow function components to have access to state and other React features. Because of this, class components are generally no longer needed.
-Hooks allow us to "hook" into React features such as state and lifecycle methods.
+Hooks are functions that let you use state and other React features without writing a class component.
 
-``import React, { useState } from "react";
-``
+- Allow functional components to have access to React state, lifecycle methods, and side effects.
+- Allow for reusable stateful logic between components via custom hooks.
+
+### Why Use Hooks?
+
+Simplify Components: Remove the need for class components; use functional components instead.
+State and Lifecycle: Manage state and lifecycle methods directly within functional components.
+Reusable Logic: Share stateful logic without altering the component hierarchy.
+Clean Code: Improve readability and maintenance by avoiding complex patterns like higher-order components and render props.
 
 ### Hook Rules
 
@@ -26,7 +32,7 @@ If you have stateful logic that needs to be reused in several components, you ca
 
 ----
 
-### **useState**
+## - useState
 
  > useState Hook to keep track of the application state.State generally refers to application data or properties that need to be tracked.
 
@@ -265,3 +271,58 @@ function Component5() {
 - Context API: Used to share the user value across deeply nested components without needing to pass it as props down the tree.
 - useContext Hook: Enables components to consume context values directly.
 - Provider: Wraps components to make data (like user) available within the tree.
+
+### useRef Hook
+
+Create a mutable object that persists across renders (commonly used for DOM manipulation).
+
+```js
+
+import { useState, useEffect, useRef } from 'react';
+
+function TrackAppRender() {
+  //add local state to a component
+  const [inputValue, setInputValue] = useState('');
+
+  // track application renders
+  const count = useRef(0);
+  // Accessing DOM Elements
+  const inputEl = useRef();
+  //Tracking State Changes
+  const prevState = useRef('');
+
+  // allow to run side effect like ( fetching data, modifying DOM, timers....)
+  useEffect(() => {
+    count.current = count.current + 1;
+  });
+  // side effect for state change
+  useEffect(() => {
+    prevState.current = inputValue;
+  }, [inputValue]);
+
+  //set focus
+  let setFocus = () => {
+    inputEl.current.focus();
+  };
+
+  return (
+    <>
+      <input
+        type='text'
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        ref={inputEl}
+      />
+      <button onClick={setFocus}>Focus Input</button>
+
+      <h1>Render Count: {count.current}</h1>
+      <h2>Current Value: {inputValue}</h2>
+      <h2>Previous Value: {prevState.current}</h2>
+    </>
+  );
+}
+
+export default TrackAppRender;
+
+
+```

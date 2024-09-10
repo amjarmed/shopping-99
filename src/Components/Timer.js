@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
-import SharedStateCp from './SharedStateCp';
+import TrackAppRender from './TrackAppRender';
 // useEffect
 function Timer() {
   let [count, setCount] = useState(0);
@@ -17,7 +17,7 @@ function Timer() {
       <h1> I've rendered {count} times!</h1>
 
       <hr />
-      <SharedStateCp />
+      <TrackAppRender />
     </>
   );
 }
