@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
-
+import SharedStateCp from './SharedStateCp';
 // useEffect
 function Timer() {
   let [count, setCount] = useState(0);
@@ -12,7 +12,14 @@ function Timer() {
     return () => clearTimeout(timer);
   }, []);
 
-  return <h1> I've rendered {count} times!</h1>;
+  return (
+    <>
+      <h1> I've rendered {count} times!</h1>
+
+      <hr />
+      <SharedStateCp />
+    </>
+  );
 }
 
 export default Timer;

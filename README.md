@@ -225,3 +225,43 @@ We do this by including a return function at the end of the useEffect Hook.
   }, []);
   
 ```
+
+### useContext Hook
+
+React's Context API and useContext hook work together to manage and share state across deeply nested components without needing to pass props manually at each level.
+
+```js
+import { useState, createContext , useContext} from 'react';
+const UserContext = createContext();
+
+function Component1() {
+  const [user, setUser] = useState('Jesse Hall');
+
+  return (
+    <>
+    //use the Context Provider to wrap the tree of components that need the
+      state Context.
+      <UserContext.Provider value={user}>
+        <h1>{`Hello ${user}!`}</h1>
+        <Component2 user={user} />
+      </UserContext.Provider>
+    </>
+  );
+}
+
+function Component5() {
+  const user = useContext(UserContext);
+
+  return (
+    <>
+      <h1>Component 5</h1>
+      <h2>{`Hello ${user} again!`}</h2>
+    </>
+  );
+}
+
+```
+
+- Context API: Used to share the user value across deeply nested components without needing to pass it as props down the tree.
+- useContext Hook: Enables components to consume context values directly.
+- Provider: Wraps components to make data (like user) available within the tree.
