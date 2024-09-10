@@ -122,7 +122,7 @@ If we only called setCar({color: "blue"}), this would remove the brand, model, a
 
 We can use the JavaScript spread operator to help us.
 
-```
+```js
 
   let updateColor = (previousState) => {
     setCar((previousState) => {
