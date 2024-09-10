@@ -1,5 +1,5 @@
 import { Outlet, Link } from 'react-router-dom';
-
+import '../index.css';
 let Layout = () => {
   return (
     <>
@@ -16,6 +16,9 @@ let Layout = () => {
           </li>
           <li>
             <Link to='/todos'>Todos</Link>
+          </li>
+          <li>
+            <Link to='/timer'>Timer</Link>
           </li>
         </ul>
       </nav>

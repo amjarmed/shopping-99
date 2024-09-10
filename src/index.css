@@ -20,3 +20,18 @@ button {
   padding: 0.25rem;
   margin: 0.5rem;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+ul li {
+  list-style: none;
+  flex-basis: 20%;
+}

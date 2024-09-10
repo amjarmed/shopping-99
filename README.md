@@ -26,7 +26,7 @@ If you have stateful logic that needs to be reused in several components, you ca
 
 ----
 
-- **useState** :
+### **useState**
 
  > useState Hook to keep track of the application state.State generally refers to application data or properties that need to be tracked.
 
@@ -121,6 +121,7 @@ What if we only want to update the color of our car?
 If we only called setCar({color: "blue"}), this would remove the brand, model, and year from our state.
 
 We can use the JavaScript spread operator to help us.
+
 ```
 
   let updateColor = (previousState) => {
@@ -128,4 +129,99 @@ We can use the JavaScript spread operator to help us.
       return { ...previousState, color: color };
     });
   };
+
+   <button type='button' onClick={updateColor}>
+        Car color
+      </button>
+      
+```
+
+Because we need the current value of state, we pass a function into our setCar function. This function receives the previous value.
+
+We then return an object, spreading the previousState and overwriting only the color.
+
+### useEffect
+
+allows you to perform side effects in your components. Some examples of side effects are: fetching data, directly updating the DOM, and timers. accepts two arguments. The second argument is optional.
+
+- useEffect(<function>, <dependency>)
+
+```js
+
+import { useState, useEffect } from "react";
+import ReactDOM from "react-dom/client";
+
+function Timer() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCount((count) => count + 1);
+    }, 1000);
+  });
+
+  return <h1>I've rendered {count} times!</h1>;
+}
+```
+
+But wait!! It keeps counting even though it should only count once!
+
+useEffect runs on every render. That means that when the count changes, a render happens, which then triggers another effect.
+
+This is not what we want. There are several ways to control when side effects run.
+
+We should always include the second parameter which accepts an array. We can optionally pass dependencies to useEffect in this array.
+
+```js
+
+// No dependency passed
+useEffect(() => {
+  //Runs on every render
+});
+
+
+// An empty array
+useEffect(() => {
+  //Runs only on the first render
+}, []);
+
+// Props or state values
+
+useEffect(() => {
+  //Runs on the first render
+  //And any time any dependency value changes
+}, [prop, state]);
+
+// Here is an example of a useEffect Hook that is dependent on a variable. If the count variable updates, the effect will run again:
+
+  useEffect(() => {
+    setCalculation(() => count * 2);
+  }, [count]); // <- add the count variable here
+
+```
+
+If there are multiple dependencies, they should be included in the useEffect dependency array.
+
+### Effect Cleanup
+
+Some effects require cleanup to reduce memory leaks.
+
+Timeouts, subscriptions, event listeners, and other effects that are no longer needed should be disposed.
+
+We do this by including a return function at the end of the useEffect Hook.
+
+```js
+
+//Clean up the timer at the end of the useEffect Hook:
+
+
+  useEffect(() => {
+    //To clear the timer, we had to name it.
+    let timer = setTimeout(() => {
+    setCount((count) => count + 1);
+  }, 1000);
+
+  return () => clearTimeout(timer)
+  }, []);
+  
 ```
