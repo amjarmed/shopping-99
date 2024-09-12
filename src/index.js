@@ -9,7 +9,7 @@ import Contact from './pages/Contact';
 import NoPage from './pages/NoPage';
 import Todos from './pages/Todos';
 import Timer from './Components/Timer';
-import './style.css';
+import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

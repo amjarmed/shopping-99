@@ -6,14 +6,11 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.45",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
     "sass": "^1.78.0",
     "shopping-99": "file:",
-    "tailwindcss": "^3.4.10",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -42,6 +39,9 @@
     ]
   },
   "devDependencies": {
-    "react-router-dom": "^6.26.1"
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.45",
+    "react-router-dom": "^6.26.1",
+    "tailwindcss": "^3.4.10"
   }
 }

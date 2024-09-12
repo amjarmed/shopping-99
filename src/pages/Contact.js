@@ -28,54 +28,54 @@ function Contact() {
         inventore! Unde, eveniet tenetur.
       </p>
       <hr />
-      <form onSubmit={handelSubmit}>
-        <br />
-        <br />
-        <label>
-          Enter your name:
-          <input
-            type='text'
-            name='username'
-            value={inputs.username || ''}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <br />
-        <br />
-        <label>
-          Enter your age:
-          <input
-            type='number'
-            name='age'
-            value={inputs.age || ''}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <br />
-        <br />
-        <br />
-        <select name='mycar' value={inputs.mycar} onChange={handleChange}>
-          <option value=''>Select</option>
-          <option value='Ford'>Ford</option>
-          <option value='Volvo'>Volvo</option>
-          <option value='Fiat'>Fiat</option>
-        </select>
-        <br />
-        <br />
-        <br />
-        <br />
-        <textarea
-          name='message'
-          value={inputs.message || ''}
-          onChange={handleChange}
+      <div className='p-2 md:p-5'>
+        <form
+          onSubmit={handelSubmit}
+          className='grid grid-cols-1 md:grid-col-6 gap-4'
         >
-          Content of the textarea.
-        </textarea>
-      </form>
+          <label>
+            <i> Enter your name:</i>
+            <input
+              type='text'
+              name='username'
+              value={inputs.username || ''}
+              onChange={handleChange}
+            />
+          </label>
 
-      <p>
+          <label>
+            <i>Enter your age:</i>
+            <input
+              type='number'
+              name='age'
+              value={inputs.age || ''}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            {' '}
+            <i> Car type:</i>
+            <select name='mycar' value={inputs.mycar} onChange={handleChange}>
+              <option value=''>Select</option>
+              <option value='Ford'>Ford</option>
+              <option value='Volvo'>Volvo</option>
+              <option value='Fiat'>Fiat</option>
+            </select>
+          </label>
+          <label>
+            {' '}
+            <i>message:</i>
+            <textarea
+              name='message'
+              value={inputs.message || ''}
+              onChange={handleChange}
+            >
+              Content of the textarea.
+            </textarea>
+          </label>
+        </form>
+      </div>
+      <p className='p-2 text-xl'>
         - your name is: {inputs.username} <br /> - age is: {inputs.age} <br />-
         message : {inputs.message}
         <br />- My Car : {inputs.mycar}

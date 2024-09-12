@@ -15,7 +15,12 @@ let Todos = () => {
       <br />
       <div>
         Count: {count}
-        <button onClick={increment}>+</button>
+        <button
+          onClick={increment}
+          className='bg-blue-500 hover:bg-blue-700 focus:outline-none active:bg-blue-800'
+        >
+          +
+        </button>
       </div>
     </div>
   );
