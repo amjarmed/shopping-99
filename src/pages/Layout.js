@@ -1,5 +1,5 @@
 import { Outlet, Link } from 'react-router-dom';
-import '../index.css';
+
 let Layout = () => {
   return (
     <>
@@ -22,8 +22,8 @@ let Layout = () => {
           </li>
         </ul>
       </nav>
-      <hr />
-      <div className='bordered'>
+
+      <div className=' border p-5'>
         <Outlet />
       </div>
     </>
